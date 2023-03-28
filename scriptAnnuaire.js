@@ -20,7 +20,6 @@ function verifcontenu(){
       const emailsDiv = document.getElementById("annuaire");
     
       const groupe1 = etablissement.groupes.find(groupe => groupe.id === nomGroupe);
-      console.log(groupe1.id)
       if (groupe1) {
 
         const groupeNom = document.createElement("h2");
@@ -62,47 +61,46 @@ function verifcontenu(){
 
 
       }else{
-        console.log("here");
-          if(groupe1 == null){
-            for (let i = 0; i < etablissement.groupes.length; i++) {
-              const groupe = etablissement.groupes[i];
+        if(nomGroupe == "0"){
+          for (let i = 0; i < etablissement.groupes.length; i++) {
+            const groupe = etablissement.groupes[i];
 
-              //Récupère et ajoute le nom du Groupe
-              const groupeNom = document.createElement("h2");
-              groupeNom.textContent = groupe.nom;
-              emailsDiv.appendChild(groupeNom);
+            //Récupère et ajoute le nom du Groupe
+            const groupeNom = document.createElement("h2");
+            groupeNom.textContent = groupe.nom;
+            emailsDiv.appendChild(groupeNom);
 
-              var k=0;
+            var k=0;
 
-              for (let j = 0; j < groupe.personnes.length; j++) {
-                const personne = groupe.personnes[j];
+            for (let j = 0; j < groupe.personnes.length; j++) {
+              const personne = groupe.personnes[j];
 
-                if (personne.nom.toLowerCase().includes(nomPersonne.toLowerCase())) {
-                  //Récupère et ajoute le Nom à la Div
-                  const nomElement = document.createElement("h3");
-                  nomElement.textContent = personne.nom;
-                  emailsDiv.appendChild(nomElement);
+              if (personne.nom.toLowerCase().includes(nomPersonne.toLowerCase())) {
+                //Récupère et ajoute le Nom à la Div
+                const nomElement = document.createElement("h3");
+                nomElement.textContent = personne.nom;
+                emailsDiv.appendChild(nomElement);
 
-                  //Récupère et ajoute le Mail et le Téléphone de la personne à la diuv
-                  const info = "Mail: " + personne.email + " / Téléphone: " + personne.telephone;
-                  const emailElement = document.createElement("p");
-                  emailElement.textContent = info;
-                  emailsDiv.appendChild(emailElement);
-                  
-                }else{
-                  k++;
-                }
-              }
-              //Vérifier si aucune personne ne contient les caractères de nomPersonne pour supprimer le Titre du groupe
-              //"Si tout le groupe est vide, supprimer le titre du groupe"
-              if(groupe.personnes.length == k){
-                const dernierElement= emailsDiv.lastChild;
-                emailsDiv.removeChild(dernierElement);
-
+                //Récupère et ajoute le Mail et le Téléphone de la personne à la diuv
+                const info = "Mail: " + personne.email + " / Téléphone: " + personne.telephone;
+                const emailElement = document.createElement("p");
+                emailElement.textContent = info;
+                emailsDiv.appendChild(emailElement);
+                
+              }else{
+                k++;
               }
             }
-            
+            //Vérifier si aucune personne ne contient les caractères de nomPersonne pour supprimer le Titre du groupe
+            //"Si tout le groupe est vide, supprimer le titre du groupe"
+            if(groupe.personnes.length == k){
+              const dernierElement= emailsDiv.lastChild;
+              emailsDiv.removeChild(dernierElement);
+
+            }
           }
+          
+        }
 
       }
   })
