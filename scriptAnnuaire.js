@@ -5,7 +5,7 @@ function verifcontenu(){
 
 
   
-  fetch('annuaireTest.json')
+  fetch('data.json')
   .then(response => response.json())
   .then(data => {
     const etablissement = data;
@@ -24,7 +24,6 @@ function verifcontenu(){
 
         const groupeNom = document.createElement("h2");
         groupeNom.textContent = groupe1.nom;
-        
 
         emailsDiv.appendChild(groupeNom);
 

@@ -15,7 +15,7 @@
         <option value="default" selected>Sélectionez un Groupe</option>
         <option value="0">Tous</option>
         <?php
-        $json = file_get_contents('annuaireTest.json');
+        $json = file_get_contents('data.json');
         $json_data = json_decode($json,true)['groupes'];
         
         foreach ($json_data as $groupe) {
@@ -23,6 +23,8 @@
         }
         ?>
     </select>
+    <?php var_dump($json_data);
+    ?>
     <input type="text" name="recherche" id="recherche" placeholder="Entrer le nom" onkeyup="verifcontenu()">
 
     <br/>
