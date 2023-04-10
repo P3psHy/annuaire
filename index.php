@@ -16,7 +16,7 @@
         <option value="0">Tous</option>
         <?php
         $json = file_get_contents('data.json');
-        $json_data = json_decode($json,true)['groupes'];
+        $json_data = json_decode($json,true)['data'];
         
         foreach ($json_data as $groupe) {
             echo"<option value=\"".$groupe["id"]."\">".$groupe["nom"]."</option>";
@@ -34,8 +34,10 @@
     </div>
 
 
+        <a href="data.json" target="_blank" rel="noopener noreferrer">données</a>
 
+    <!-- <script src="scriptAnnuaire.js"></script> -->
+    <script src="newScriptAnnuaire.js"></script> 
 
-    <script src="scriptAnnuaire.js"></script> 
 </body>
 </html>

@@ -19,7 +19,7 @@ function verifcontenu(){
 
       const emailsDiv = document.getElementById("annuaire");
     
-      const groupe1 = etablissement.groupes.find(groupe => groupe.id === nomGroupe);
+      const groupe1 = etablissement.data.find(groupe => groupe.id === nomGroupe);
       if (groupe1) {
 
         const groupeNom = document.createElement("h2");
