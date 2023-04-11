@@ -16,7 +16,6 @@ function verifcontenu(){
 
       const groupe1 = etablissement.data.find(groupe => groupe.id === nomGroupe);
 
-      const listePersonne = etablissement.data[1].listePersonne;
       const noms = Object.values(listePersonne).map(personne => personne.nom);
       
       console.log(noms);
