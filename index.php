@@ -23,7 +23,7 @@
         }
         ?>
     </select>
-    <?php var_dump($json_data);
+    <?php //var_dump($json_data);
     ?>
     <input type="text" name="recherche" id="recherche" placeholder="Entrer le nom" onkeyup="verifcontenu()">
 

@@ -10,17 +10,35 @@ function verifcontenu(){
     .then(data => {
       const etablissement = data;
 
-      const nomGroupe = document.getElementById("listeRecherche").value;
+      const idGroupe = document.getElementById("listeRecherche").value;
       const nomPersonne = document.getElementById("recherche").value;
-      const annuire = document.getElementById("annuaire");
+      const annuaire = document.getElementById("annuaire");
 
-      const groupe1 = etablissement.data.find(groupe => groupe.id === nomGroupe);
-
-      const noms = Object.values(listePersonne).map(personne => personne.nom);
+      const groupe = data.data[idGroupe].listePersonne;
       
-      console.log(noms);
+      // if(groupe){
 
+      //   for (const key in groupe1) {
+      //     if (groupe1.hasOwnProperty(key)) {
+      //       const personne = groupe1[key];
+      //       if (personne.nom.includes("Jas")) {
+      //         nomsGroupe1.push(personne.nom);
+      //       }
+      //     }
+      //   }
       
+      if(groupe){
+        
+        const groupeNom = document.createElement("h2");
+        groupeNom.textContent = groupe.nom;
+
+        annuaire.appendChild(groupeNom);
+
+        console.log(groupe.nom);
+        console.log("Ok !");
+      }else{
+        console.log("error");
+      }
 
     });
 }
