@@ -43,14 +43,10 @@ function verifcontenu(){
           annuaire.appendChild(emailElement);
         }
         
-        array.forEach(element => {
-          
-        });
 
 
-        for (let j = 0; j < Object.keys(data.data[idGroupe].listePersonne).length; j++) {
+        for (let j = 1; j <= Object.keys(groupe.listePersonne).length; j++) {
           const personne = groupe.listePersonne[j];
-          console.log(personne);
 
           if (personne.nom.toLowerCase().includes(nomPersonne.toLowerCase())) {
 
@@ -70,10 +66,52 @@ function verifcontenu(){
         }
 
 
-
-
       }else{
-        console.log("error");
+        if(idGroupe == "0"){
+
+          for (let i = 1; i <= Object.keys(data.data).length; i++) {
+            const groupe = data.data[i];
+            console.log(groupe);
+            //Récupère et ajoute le nom du Groupe
+            const groupeNom = document.createElement("h2");
+            groupeNom.textContent = groupe.nom;
+            annuaire.appendChild(groupeNom);
+
+            var k=0;
+
+            console.log("");
+
+            for (let j = 1; j <= Object.keys(groupe.listePersonne).length; j++) {
+              const personne = groupe.listePersonne[j];
+              console.log(j);
+              console.log(personne);
+              if (personne.nom.toLowerCase().includes(nomPersonne.toLowerCase())) {
+                //Récupère et ajoute le Nom à la Div
+                const nomElement = document.createElement("h3");
+                nomElement.textContent = personne.nom;
+                annuaire.appendChild(nomElement);
+
+                //Récupère et ajoute le Mail et le Téléphone de la personne à la diuv
+                const info = "Mail: " + personne.email + " / Téléphone: " + personne.telephone;
+                const emailElement = document.createElement("p");
+                emailElement.textContent = info;
+                annuaire.appendChild(emailElement);
+                
+              }else{
+                k++;
+              }
+            }
+            //Vérifier si aucune personne ne contient les caractères de nomPersonne pour supprimer le Titre du groupe
+            //"Si tout le groupe est vide, supprimer le titre du groupe"
+            if(Object.keys(groupe.listePersonne).length == k){
+              const dernierElement= annuaire.lastChild;
+              annuaire.removeChild(dernierElement);
+
+            }
+          }
+          
+        }
+
       }
 
     });
