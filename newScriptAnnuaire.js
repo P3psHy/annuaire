@@ -10,6 +10,8 @@ function verifcontenu(){
     .then(data => {
       const etablissement = data;
 
+      document.getElementById("annuaire").innerHTML = "";
+
       const idGroupe = document.getElementById("listeRecherche").value;
       const nomPersonne = document.getElementById("recherche").value;
       const annuaire = document.getElementById("annuaire");
