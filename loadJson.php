@@ -1,4 +1,7 @@
 <?php
+
+file_put_contents("data.json", json_encode([]));
+
 require "connection.php" ;
 
 $sqlPersonne=$connection ->prepare('SELECT * FROM personnes ORDER BY groupeId');

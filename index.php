@@ -12,8 +12,8 @@
     <h1>Liste</h1>
 
     <select name="listeRecherche" id="listeRecherche" onchange="verifcontenu()">
-        <option value="default" selected>Sélectionez un Groupe</option>
-        <option value="0">Tous</option>
+        <option value="0" selected>Sélectionez un Groupe</option>
+        <option value="">Tous</option>
         <?php
         $json = file_get_contents('data.json');
         $json_data = json_decode($json,true)['data'];

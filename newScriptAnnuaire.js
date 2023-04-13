@@ -16,21 +16,10 @@ function verifcontenu(){
       const nomPersonne = document.getElementById("recherche").value;
       const annuaire = document.getElementById("annuaire");
 
-      const groupe = data.data[idGroupe];
+      const groupe = data.data[idGroupe-1];
       
-      // if(groupe){
 
-      //   for (const key in groupe1) {
-      //     if (groupe1.hasOwnProperty(key)) {
-      //       const personne = groupe1[key];
-      //       if (personne.nom.includes("Jas")) {
-      //         nomsGroupe1.push(personne.nom);
-      //       }
-      //     }
-      //   }
-      
-      if(groupe){
-        
+      if(groupe && idGroupe != "0"){
         const groupeNom = document.createElement("h2");
         groupeNom.textContent = groupe.nom;
         annuaire.appendChild(groupeNom);
@@ -45,9 +34,9 @@ function verifcontenu(){
         
 
 
-        for (let j = 1; j <= Object.keys(groupe.listePersonne).length; j++) {
+        for (let j = 0; j < Object.keys(groupe.listePersonne).length; j++) {
           const personne = groupe.listePersonne[j];
-
+          
           if (personne.nom.toLowerCase().includes(nomPersonne.toLowerCase())) {
 
             //Récupère et ajoute le Nom à la Div
@@ -56,7 +45,7 @@ function verifcontenu(){
             annuaire.appendChild(nomElement);
 
             //Récupère et ajoute le Mail et le Téléphone de la personne à la div
-            const info = "Mail: " + personne.email + " / Téléphone: " + personne.telephone;
+            const info = "Mail: " + personne.mail + " / Téléphone: " + personne.telephone;
             const emailElement = document.createElement("p");
             emailElement.textContent = info;
             annuaire.appendChild(emailElement);
@@ -67,9 +56,9 @@ function verifcontenu(){
 
 
       }else{
-        if(idGroupe == "0"){
+        if(groupe == undefined && idGroupe != "0"){
 
-          for (let i = 1; i <= Object.keys(data.data).length; i++) {
+          for (let i = 0; i < Object.keys(data.data).length; i++) {
             const groupe = data.data[i];
             console.log(groupe);
             //Récupère et ajoute le nom du Groupe
@@ -81,10 +70,9 @@ function verifcontenu(){
 
             console.log("");
 
-            for (let j = 1; j <= Object.keys(groupe.listePersonne).length; j++) {
+            for (let j = 0; j < Object.keys(groupe.listePersonne).length; j++) {
               const personne = groupe.listePersonne[j];
-              console.log(j);
-              console.log(personne);
+
               if (personne.nom.toLowerCase().includes(nomPersonne.toLowerCase())) {
                 //Récupère et ajoute le Nom à la Div
                 const nomElement = document.createElement("h3");
