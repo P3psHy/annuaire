@@ -8,7 +8,6 @@ function verifcontenu(){
     fetch('data.json')
     .then(response => response.json())
     .then(data => {
-      const etablissement = data;
 
       document.getElementById("annuaire").innerHTML = "";
 
@@ -22,6 +21,7 @@ function verifcontenu(){
       if(groupe && idGroupe != "0"){
         const groupeNom = document.createElement("h2");
         groupeNom.textContent = groupe.nom;
+        groupeNom.style.cssText ="margin-top:15px; color: #229B7E; font-family: Calibri;";
         annuaire.appendChild(groupeNom);
 
         if(groupe.mail != " " || groupe.telephone != " "){
@@ -29,6 +29,7 @@ function verifcontenu(){
           const infosGroupe ="Mail: " + groupe.mail + " / Téléphone:" + groupe.telephone;
           const emailElement = document.createElement("p");
           emailElement.textContent = infosGroupe;
+          emailElement.style.cssText ="color: white; font-family: Calibri;";
           annuaire.appendChild(emailElement);
         }
         
@@ -48,6 +49,7 @@ function verifcontenu(){
             const info = "Mail: " + personne.mail + " / Téléphone: " + personne.telephone;
             const emailElement = document.createElement("p");
             emailElement.textContent = info;
+            emailElement.style.cssText ="color: white; font-family: Calibri;";
             annuaire.appendChild(emailElement);
 
 
@@ -64,6 +66,7 @@ function verifcontenu(){
             //Récupère et ajoute le nom du Groupe
             const groupeNom = document.createElement("h2");
             groupeNom.textContent = groupe.nom;
+            groupeNom.style.cssText ="margin-top:15px; color: #229B7E; font-family: Calibri;";
             annuaire.appendChild(groupeNom);
 
             var k=0;
@@ -83,6 +86,7 @@ function verifcontenu(){
                 const info = "Mail: " + personne.email + " / Téléphone: " + personne.telephone;
                 const emailElement = document.createElement("p");
                 emailElement.textContent = info;
+                emailElement.style.cssText ="color: white; font-family: Calibri;";
                 annuaire.appendChild(emailElement);
                 
               }else{
